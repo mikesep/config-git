@@ -1,0 +1,4 @@
+[include]
+	path = config-user
+	path = config-main
+	path = config-local

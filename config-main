@@ -1,0 +1,28 @@
+[alias]
+	remotes = remote -v
+	st = status --short --branch
+
+[core]
+	pager = less -x1,5  # 4-column tabs (https://stackoverflow.com/q/10581093)
+
+[diff]
+	renames = copy
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+
+[log]
+	abbrevCommit = true
+	date = default-local
+	decorate = auto
+
+[pull]
+	ff = only
+
+[push]
+	default = simple
+
+[rebase]
+	autosquash = true
