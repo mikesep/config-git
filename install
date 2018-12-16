@@ -1,0 +1,48 @@
+#!/bin/bash
+
+function set_up_config_local
+{
+  local dest
+  case "$(uname)" in
+    Darwin) dest="config-mac" ;;
+    Linux)  dest="config-linux" ;;
+    *)      echo "Unknown platform: $(uname)" ; exit 1 ;;
+  esac
+
+  local config_local
+  config_local="$(dirname "${BASH_SOURCE[0]}")/config-local"
+
+  if [ -L "$config_local" ] ; then
+    local points_to
+    points_to=$(command ls -l "$config_local" | sed -e 's/^.\+ -> //')
+
+    if [ "$points_to" != "$dest" ] ; then
+      echo "ERROR: $config_local is pointing to $points_to, but it should point to $dest."
+      exit 1
+    fi
+
+    echo "Found $config_local -> $dest."
+  elif [ -e "$config_local" ] ; then
+    echo "ERROR: $config_local exists but not a symlink."
+    exit 1
+  else
+    ln -s "$dest" "$config_local"
+    echo "Created $config_local -> $dest."
+  fi
+}
+set_up_config_local
+unset set_up_config_local
+
+function check_git_key
+{
+  local value
+  value="$(git config --global --includes --get "$1")"
+  if [ -n "$value" ] ; then
+    echo "Found $1 = $value"
+  else
+    echo "Missing $1"
+  fi
+}
+check_git_key "user.name"
+check_git_key "user.email"
+unset check_git_key
