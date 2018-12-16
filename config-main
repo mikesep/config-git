@@ -8,6 +8,7 @@
 	pager = less -x1,5  # 4-column tabs (https://stackoverflow.com/q/10581093)
 
 [diff]
+    algorithm = histogram
 	renames = copy
 
 [filter "lfs"]
