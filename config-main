@@ -1,3 +1,5 @@
+# vim: filetype=gitconfig
+
 [alias]
 	remotes = remote -v
 	st = status --short --branch

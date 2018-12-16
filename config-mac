@@ -1,2 +1,4 @@
+# vim: filetype=gitconfig
+
 [core]
 	editor = mvim -f
