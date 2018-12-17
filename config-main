@@ -4,6 +4,9 @@
 	remotes = remote -v
 	st = status --short --branch
 
+[commit]
+	verbose = true
+
 [core]
 	pager = less -x1,5  # 4-column tabs (https://stackoverflow.com/q/10581093)
 
