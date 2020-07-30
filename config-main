@@ -19,6 +19,9 @@
 	smudge = git-lfs smudge %f
 	required = true
 
+[init]
+	defaultBranch = main
+
 [log]
 	abbrevCommit = true
 	date = default-local
