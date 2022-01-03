@@ -3,6 +3,8 @@
 [alias]
 	remotes = remote -v
 	st = status --short --branch
+	fetch-all-prune = fetch --all --prune
+	pull-all-prune = pull --all --prune
 
 [commit]
 	verbose = true
